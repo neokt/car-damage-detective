@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Third Container (Submit damage assessment)  -->
+<div class="container-fluid bg-2 text-center" id="third">
+{% if scroll %}
+<script>
+    document.location.hash = '#' + '{{ scroll }}';
+</script>
+{% endif %}
+    <h3>Damage Assessment Complete</h3>
+    <br>
+    <p><img src="{{ url_for('send_file', filename=filename) }}" class="img-thumbnail" id="picture"></p>
+      <h4>Results:</h4>
+    <table>
+    <tr><td>Car validation check</td>
+      {% if result['gate1_result'] %}
+        <td><span class="glyphicon glyphicon-ok"></span></td></tr>
+        <tr><td>Damage validation check</td>
+      {% if result['gate2_result'] %}
+        <td><span class="glyphicon glyphicon-ok"></span></td></tr>
+        <tr><td>Location</td>
+        <td>{{ result['location'] }}</td></tr>
+        <tr><td>Severity</td>
+        <td>{{ result['severity'] }}</td></tr>
+        </table>
+        {% else %}
+        <td><span class="glyphicon glyphicon-remove"></span></td></tr></table>
+        <br><p>{{ result['gate2_message'][0] }}</p>
+        <p>{{ result['gate2_message'][1] }}</p>
+      {% endif %}
+      {% else %}
+        <td><span class="glyphicon glyphicon-remove"></span></td></tr></table>
+        <br><p>{{ result['gate1_message'][0] }}</p>
+        <p>{{ result['gate1_message'][1] }}</p>
+      {% endif %}
+    <br><p>{{ result['final'] }}</p>
+    <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" id="menu1">Next Steps
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="line-height: 20px;vertical-align:middle;" >
+    <!--<li class="dropdown-header">Next Steps</li>-->
+    <li><a href="{{ url_for('available', a='Cost estimates') }}">Obtain cost estimate</a></li>
+    <li><a href="{{ url_for('available', a='Third party support') }}">Send to insurance carrier</a></li>
+    <li><a href="{{ url_for('available', a='Documentation') }}">Print documentation</a></li>
+    <!--<li class="dropdown-header">Resubmit</li>-->
+    <li><a href="{{ url_for('assess') }}">Request another damage assessment</a></li>
+  </ul></div>
+</div>
+
+{% endblock %}
+
+<!--
+    <br><p><a href="{{ url_for('assess') }}" class="btn btn-default">
+    Submit Another Damage Assessment Request
+-->

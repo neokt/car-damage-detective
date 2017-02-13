@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Third Container (Submit damage assessment)  -->
+<div class="container-fluid bg-2 text-center" id="third">
+{% if scroll %}
+<script>
+    document.location.hash = '#' + '{{ scroll }}';
+</script>
+{% endif %}
+    <h3>Submit Damage Assessment</h3>
+        <div class = flashes>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}</div>
+  <!--   <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+  <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+  <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Upload image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+  <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+  <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Submit</a>
+  </div> -->
+
+<div class="fileinput fileinput-new" data-provides="fileinput">
+  <div class="fileinput-preview thumbnail" data-trigger="fileinput" id="window"></div>
+  <div>
+    <form action="assessment" method="POST" enctype="multipart/form-data" class ="form-inline">
+    <span class="btn btn-default btn-file">
+    <span class="fileinput-new">Select Image</span>
+    <span class="fileinput-exists">Change</span>
+    <input type="file" id="filename" name="file"></span>
+    <button type="submit" class="btn btn-default fileinput-exists" id="analyze" onclick="loading();">Submit</button></form></div>
+
+  </div>
+  <div id="loading"></div>
+      <h4>Image tips:</h4>
+    <p>Please upload an image focused on one major area of damage (e.g., front, side, or rear).</p>
+    <p>Try to contain most of the car in the picture unless it doesn't capture the damage well. If there is more than one major area of damage, you can upload and assess multiple pictures.</p>
+    <p>The maximum filesize is 10MB.</p>
+    <p>Only jpg, jpeg, gif and png formats are currently supported.</p>
+  </div>
+</div>
+{% endblock %}
