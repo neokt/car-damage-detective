@@ -7,7 +7,9 @@ Created a proof of concept to expedite the personal auto claims process with com
 * Web app - Car Damage Detective - Currently unavailable
 * [Presentation](neokt-car-damage-detective-121416.pdf)
 
-Access to the [image dataset](https://docs.google.com/forms/d/e/1FAIpQLSfuMMGafmiZ35alIgYkZeyGkR6gHhBURjxJPSe6aB6CWjN1EA/viewform) is made available under the Open Data Commons Attribution License: https://opendatacommons.org/licenses/by/1.0/. 
+[Access to the image dataset](https://docs.google.com/forms/d/e/1FAIpQLSfuMMGafmiZ35alIgYkZeyGkR6gHhBURjxJPSe6aB6CWjN1EA/viewform) is made available under the Open Data Commons Attribution License: https://opendatacommons.org/licenses/by/1.0/. 
+
+Credit for the Google Images scraper goes to Ian London's fantastic [General Image Classifier](https://github.com/IanLondon/general_img_classifier) project.
 
 ### Demonstration
 ![Demo](https://raw.githubusercontent.com/neokt/car-damage-detective/master/car-damage-detective-demo.gif "Car Damage Detective Demo")
